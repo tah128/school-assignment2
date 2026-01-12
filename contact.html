@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Luxury Dog Hotel - Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">[LOGO]</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="boarding.html">Boarding</a></li>
+          <li><a href="daycare.html">Daycare</a></li>
+          <li><a href="grooming.html">Grooming</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Contact Us</h1>
+    <p>Book a stay or request more information.</p>
+  </section>
+
+  <section class="section" style="max-width:900px; margin:auto;">
+    <p>Email: info@luxurydoghotel.com</p>
+    <p>Phone: 000-000-0000</p>
+    <p>Address: Your Street, Your City</p>
+
+    <div class="card" style="margin-top:15px;">
+      <strong>Booking Request Form</strong><br><br>
+	  
+      <form action="https://formspree.io/f/mqardpow" method="POST">
+        <input type="text" name="_gotcha" style="display:none;" />
+
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="Your Name" 
+          required 
+          style="padding:8px; width:100%; margin-bottom:10px;"
+        >
+
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Email" 
+          required 
+          style="padding:8px; width:100%; margin-bottom:10px;"
+        >
+
+        <input 
+          type="text" 
+          name="dog_name" 
+          placeholder="Dog's Name" 
+          style="padding:8px; width:100%; margin-bottom:10px;"
+        >
+
+        <textarea 
+          name="message" 
+          placeholder="Message or dates" 
+          required 
+          style="padding:8px; width:100%; height:90px; margin-bottom:15px;"
+        ></textarea>
+		
+        <button 
+          type="submit" 
+          style="padding:12px 24px; background:#c6a25b; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;"
+        >
+          Send Request
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer>© Luxury Dog Hotel – All Rights Reserved</footer>
+</body>
+</html>
