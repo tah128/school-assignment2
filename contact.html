@@ -1,6 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Luxury Dog Hotel - Contacttitle>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<style>
+  /* Contact form styles */
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+  }
+  
+  .form-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 30px;
+    border: 1px solid var(--gray);
+    text-align: center;
+    width: 100%;
+  }
+  
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--gray);
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .form-textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .form-button {
+    padding: 14px 40px;
+    background: var(--gold);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    display: inline-block;
+  }
+  
+  @media (max-width: 768px) {
+    .form-card {
+      padding: 20px;
+    }
+    
+    .form-button {
+      width: 100%;
+    }
+  }
+</style>
+
   <title>Luxury Dog Hotel - Contact</title>
   <link rel="stylesheet" href="style.css">
   <style>
@@ -222,6 +286,13 @@
     // Close menu when pressing Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+    
+    // Close menu when window is resized to desktop size
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
         closeMenu();
       }
     });

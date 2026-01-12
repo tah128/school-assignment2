@@ -1,4 +1,11 @@
-<!DOCTYPE html><html><head><title>Luxury Dog Hotel - Home</title><link rel="stylesheet" href="style.css"></head><body>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Luxury Dog Hotel - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 <header>
   <div class="container">
     <div class="logo">[LOGO]</div>
@@ -85,6 +92,13 @@
     // Close menu when pressing Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+    
+    // Close menu when window is resized to desktop size
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
         closeMenu();
       }
     });
