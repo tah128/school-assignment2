@@ -3,81 +3,230 @@
 <head>
   <title>Luxury Dog Hotel - Contact</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Additional styles for the contact page */
+    .contact-info {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+    
+    .contact-info p {
+      margin: 10px 0;
+    }
+    
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .form-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 30px;
+      border: 1px solid var(--gray);
+      text-align: center;
+    }
+    
+    .form-title {
+      color: var(--navy);
+      font-size: 24px;
+      margin-bottom: 25px;
+      display: block;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1px solid var(--gray);
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    
+    .form-textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 25px;
+      border: 1px solid var(--gray);
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .form-button {
+      padding: 14px 40px;
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.2s;
+      display: inline-block;
+      min-width: 200px;
+    }
+    
+    .form-button:hover {
+      background: #b5934f;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .form-card {
+        padding: 20px;
+      }
+      
+      .form-title {
+        font-size: 20px;
+      }
+      
+      .form-button {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">[LOGO]</div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="boarding.html">Boarding</a></li>
-          <li><a href="daycare.html">Daycare</a></li>
-          <li><a href="grooming.html">Grooming</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header>
+  <div class="container">
+    <div class="logo">[LOGO]</div>
+    
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="boarding.html">Boarding</a></li>
+        <li><a href="daycare.html">Daycare</a></li>
+        <li><a href="grooming.html">Grooming</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Overlay for closing menu when clicking outside -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+  </div>
+</header>
 
   <section class="hero">
     <h1>Contact Us</h1>
     <p>Book a stay or request more information.</p>
   </section>
 
-  <section class="section" style="max-width:900px; margin:auto;">
-    <p>Email: info@luxurydoghotel.com</p>
-    <p>Phone: 000-000-0000</p>
-    <p>Address: Your Street, Your City</p>
+  <section class="section">
+    <div class="contact-info">
+      <p>Email: info@luxurydoghotel.com</p>
+      <p>Phone: 000-000-0000</p>
+      <p>Address: Your Street, Your City</p>
+    </div>
 
-    <div class="card" style="margin-top:15px;">
-      <strong>Booking Request Form</strong><br><br>
-	  
-      <form action="https://formspree.io/f/mqardpow" method="POST">
-        <input type="text" name="_gotcha" style="display:none;" />
+    <div class="form-container">
+      <div class="form-card">
+        <span class="form-title">Booking Request Form</span>
+        
+        <form action="https://formspree.io/f/mqardpow" method="POST">
+          <input type="text" name="_gotcha" style="display:none;" />
 
-        <input 
-          type="text" 
-          name="name" 
-          placeholder="Your Name" 
-          required 
-          style="padding:8px; width:100%; margin-bottom:10px;"
-        >
+          <input 
+            type="text" 
+            name="name" 
+            placeholder="Your Name" 
+            required 
+            class="form-input"
+          >
 
-        <input 
-          type="email" 
-          name="email" 
-          placeholder="Email" 
-          required 
-          style="padding:8px; width:100%; margin-bottom:10px;"
-        >
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Email Address" 
+            required 
+            class="form-input"
+          >
 
-        <input 
-          type="text" 
-          name="dog_name" 
-          placeholder="Dog's Name" 
-          style="padding:8px; width:100%; margin-bottom:10px;"
-        >
+          <input 
+            type="text" 
+            name="dog_name" 
+            placeholder="Dog's Name" 
+            class="form-input"
+          >
 
-        <textarea 
-          name="message" 
-          placeholder="Message or dates" 
-          required 
-          style="padding:8px; width:100%; height:90px; margin-bottom:15px;"
-        ></textarea>
-		
-        <button 
-          type="submit" 
-          style="padding:12px 24px; background:#c6a25b; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;"
-        >
-          Send Request
-        </button>
-      </form>
+          <textarea 
+            name="message" 
+            placeholder="Message or preferred dates" 
+            required 
+            class="form-textarea"
+          ></textarea>
+          
+          <button 
+            type="submit" 
+            class="form-button"
+          >
+            Send Request
+          </button>
+        </form>
+      </div>
     </div>
   </section>
 
   <footer>© Luxury Dog Hotel – All Rights Reserved</footer>
+  
+  <script>
+  // Mobile menu functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const body = document.body;
+    
+    function toggleMenu() {
+      body.classList.toggle('menu-active');
+    }
+    
+    function closeMenu() {
+      body.classList.remove('menu-active');
+    }
+    
+    // Toggle menu when hamburger is clicked
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
+      });
+    }
+    
+    // Close menu when clicking overlay
+    if (menuOverlay) {
+      menuOverlay.addEventListener('click', closeMenu);
+    }
+    
+    // Close menu when clicking a nav link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+    
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+  });
+</script>
+
 </body>
 </html>

@@ -14,7 +14,7 @@ body {
   line-height: 1.5;
 }
 
-/* Mobile First Styles */
+/* Header and Logo */
 header {
   background: white;
   border-bottom: 2px solid var(--gray);
@@ -27,37 +27,53 @@ header {
   margin: auto;
   width: 100%;
   padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo { 
   font-size: 22px; 
   font-weight: bold; 
   color: var(--navy);
-  margin-bottom: 10px;
+  z-index: 1001;
 }
 
-/* Mobile Navigation */
+/* Hamburger Menu Button */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--navy);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Navigation Menu */
 nav ul { 
   list-style: none; 
   display: flex; 
-  flex-wrap: wrap;
-  gap: 12px;
-  overflow-x: auto;
-  padding-bottom: 5px;
-  -webkit-overflow-scrolling: touch;
-}
-
-nav ul::-webkit-scrollbar {
-  display: none;
+  gap: 20px;
 }
 
 nav a { 
   color: var(--navy); 
   text-decoration: none; 
   font-weight: bold;
-  font-size: 14px;
-  white-space: nowrap;
-  padding: 5px 8px;
+  font-size: 16px;
+  padding: 5px 10px;
   border-radius: 4px;
   transition: background-color 0.2s;
 }
@@ -95,11 +111,13 @@ nav a:hover {
   font-size: 24px;
 }
 
+/* Card Group Layout - FIXED FOR CENTERING */
 .card-group {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  justify-items: center; /* This centers the cards in their grid cells */
 }
 
 .card {
@@ -109,6 +127,15 @@ nav a:hover {
   padding: 18px;
   border: 1px solid var(--gray);
   transition: transform 0.2s;
+  width: 100%; /* Make cards take full width of their grid cell */
+  max-width: 350px; /* Optional: Set a max-width for better centering */
+}
+
+/* Center the content inside cards */
+.card > * {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card:hover {
@@ -127,6 +154,8 @@ nav a:hover {
   font-size: 14px;
   margin-bottom: 12px;
   overflow: hidden;
+  /* Center the text inside the image placeholder */
+  text-align: center;
 }
 
 footer {
@@ -138,68 +167,102 @@ footer {
   font-size: 14px;
 }
 
-/* Form improvements for mobile */
-input, textarea, button {
-  font-size: 16px !important; /* Prevents iOS zoom on focus */
-}
-
-input, textarea {
-  width: 100% !important;
-  padding: 12px !important;
-  margin-bottom: 15px !important;
-  border: 1px solid var(--gray) !important;
-  border-radius: 6px !important;
-}
-
-button {
-  padding: 14px 28px !important;
-  background: var(--gold) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 6px !important;
-  cursor: pointer !important;
-  font-weight: bold !important;
-  font-size: 16px !important;
-  width: 100% !important;
-}
-
-/* Hide scrollbar globally */
-html {
-  scrollbar-width: none;
-  -webkit-text-size-adjust: 100%; /* Prevents text scaling */
-}
-
-body {
-  -ms-overflow-style: none;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-::-webkit-scrollbar {
-  display: none;
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  
+  /* Default state: menu hidden */
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    padding: 80px 20px 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  
+  /* When menu is active */
+  .menu-active nav {
+    right: 0;
+  }
+  
+  /* Animate hamburger to X */
+  .menu-active .menu-toggle span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  
+  .menu-active .menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-active .menu-toggle span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  
+  /* Mobile menu styles */
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  nav li {
+    width: 100%;
+    border-bottom: 1px solid var(--gray);
+  }
+  
+  nav a {
+    display: block;
+    padding: 15px 10px;
+    font-size: 18px;
+    width: 100%;
+    border-radius: 0;
+  }
+  
+  nav a:hover {
+    background-color: var(--light);
+  }
+  
+  /* Overlay when menu is open */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 999;
+  }
+  
+  .menu-active .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Prevent body scroll when menu is open */
+  body.menu-active {
+    overflow: hidden;
+  }
 }
 
 /* Tablet and larger screens */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   header {
     padding: 20px 30px;
   }
   
   .logo {
     font-size: 26px;
-    margin-bottom: 0;
-  }
-  
-  nav ul {
-    gap: 20px;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    overflow-x: visible;
-  }
-  
-  nav a {
-    font-size: 16px;
-    padding: 5px 10px;
   }
   
   .hero {
@@ -222,21 +285,27 @@ body {
     font-size: 28px;
   }
   
+  /* For tablet: 2 columns */
   .card-group {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 25px;
+    justify-items: center; /* Center cards in grid cells */
+  }
+  
+  /* On tablet, text inside cards should still be centered */
+  .card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .img-placeholder {
     height: 180px;
   }
-  
-  button {
-    width: auto !important;
-  }
 }
 
-/* Desktop */
+/* Desktop - FIXED FOR CENTERING */
 @media (min-width: 1024px) {
   header {
     padding: 20px 40px;
@@ -258,8 +327,60 @@ body {
     font-size: 30px;
   }
   
+  /* For desktop: 3 columns and proper centering */
   .card-group {
-    max-width: 1100px;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: center; /* Center each card in its grid cell */
   }
+  
+  /* Ensure cards are centered and content is centered */
+  .card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 320px; /* Adjust based on your preference */
+  }
+  
+  /* Center all text and elements inside cards */
+  .card > * {
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Center the image placeholder text */
+  .img-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* For even larger screens - extra centering */
+@media (min-width: 1200px) {
+  .card-group {
+    justify-content: center;
+  }
+}
+
+/* Hide scrollbar globally */
+html {
+  scrollbar-width: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -ms-overflow-style: none;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

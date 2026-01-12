@@ -1,15 +1,30 @@
 <!DOCTYPE html><html><head><title>Luxury Dog Hotel - Daycare</title><link rel="stylesheet" href="style.css"></head><body>
-<header><div class="container"><div class="logo">[LOGO]</div>
-<nav><ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="services.html">Services</a></li>
-<li><a href="boarding.html">Boarding</a></li>
-<li><a href="daycare.html">Daycare</a></li>
-<li><a href="grooming.html">Grooming</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul></nav></div></header>
-
+<header>
+  <div class="container">
+    <div class="logo">[LOGO]</div>
+    
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="boarding.html">Boarding</a></li>
+        <li><a href="daycare.html">Daycare</a></li>
+        <li><a href="grooming.html">Grooming</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Overlay for closing menu when clicking outside -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+  </div>
+</header>
 <section class="hero"><h1>Dog Daycare</h1><p>Safe, supervised social playgroups.</p></section>
 
 <section class="section"><div class="card-group">
@@ -19,4 +34,50 @@
 </div></section>
 
 <footer>© Luxury Dog Hotel – All Rights Reserved</footer>
+
+<script>
+  // Mobile menu functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const body = document.body;
+    
+    function toggleMenu() {
+      body.classList.toggle('menu-active');
+    }
+    
+    function closeMenu() {
+      body.classList.remove('menu-active');
+    }
+    
+    // Toggle menu when hamburger is clicked
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
+      });
+    }
+    
+    // Close menu when clicking overlay
+    if (menuOverlay) {
+      menuOverlay.addEventListener('click', closeMenu);
+    }
+    
+    // Close menu when clicking a nav link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+    
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+  });
+</script>
+
+
 </body></html>
